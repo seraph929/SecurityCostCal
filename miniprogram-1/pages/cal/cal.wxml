@@ -1,0 +1,151 @@
+<!--index.wxml-->
+<view class="container" name="top">
+  <view>
+    <view class="flex-wrp">
+      <view>
+        <image style="width: 25px; height: 25px;" src='../../pages/img/bourse.png'></image>  
+      </view>
+      <view>
+        <text class="textdisplay2" decode="{{true}}">&nbsp;交易市场</text>
+      </view>
+    </view>
+    <view class="flex-wrp">
+      <view>
+        <radio-group class="radio-group" bindchange="tradeMarketChange">
+          <label wx:for="{{tradeMarketSet}}" wx:key="key">
+            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 25px; height: 25px;" src='../../pages/img/buy.png'></image>
+      </view>
+      <view >
+        <text class="textdisplay" decode="{{true}}">&nbsp;买入价格:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="买入价格" placeholder="请输入股票买入价格" value='{{buyPriceValue}}' bindinput="buyPriceInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;元</text>
+      </view>
+    </view>
+    <view wx:if="{{buyPriceDigitHint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{buyPriceDigitHint}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 25px; height: 25px;" src='../../pages/img/sell.png'></image>
+      </view>
+      <view >
+        <text class="textdisplay" decode="{{true}}">&nbsp;卖出价格:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="卖出价格" placeholder="请输入股票卖出价格" value='{{sellPriceValue}}' bindinput="sellPriceInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;元</text>
+      </view>
+    </view>
+    <view wx:if="{{sellPriceDigitHint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{sellPriceDigitHint}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 20px; height: 20px;" src='../../pages/img/stocknum.png'></image>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;股票数量:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="股票数量" placeholder="请输入股票数量" value='{{numberValue}}' bindinput="numberInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;股</text> 
+      </view>
+    </view>
+    <view wx:if="{{numDigitHint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{numDigitHint}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 20px; height: 20px;" src='../../pages/img/commission.png'></image>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;佣金设置:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="佣金比例" placeholder="请输入佣金比例" value='{{commissionPercentValue}}' bindinput="commissionInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;‱</text>
+      </view>
+    </view>
+    <view wx:if="{{commissionDigitHint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{commissionDigitHint}}</text>
+      </view>
+    </view>
+  </view>
+  <button bindtap="resetBtnClick" class="reset">
+    <view>重置</view>
+  </button>
+  <button bindtap="profitAndLossCalBtnClick" class="btn1{{profitAndLossCalBtnJudge?'btnative':''}}">
+    <view>盈亏计算</view>
+  </button>
+  <view wx:if="{{fee > 0}}" class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" decode="{{true}}">总费用&nbsp;:</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" decode="{{true}}">{{fee}}&nbsp;&nbsp;</text>
+      </view>
+      <view class="priceunitwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">元</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">利润&nbsp;：</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" class="textdisplay{{(profit>0)?'red':(profit==0)?'':'green'}}" decode="{{true}}">{{profit}}&nbsp;&nbsp;</text>
+      </view>
+      <view class="priceunitwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">元</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">盈亏比例&nbsp;：</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" class="textdisplay{{(profitPercent>0)?'red':(profitPercent==0)?'':'green'}}" decode="{{true}}">{{profitPercent}}&nbsp;&nbsp;</text>
+      </view>
+      <view class="priceunitwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">%</text>
+      </view>
+    </view>
+  </view>
+</view>

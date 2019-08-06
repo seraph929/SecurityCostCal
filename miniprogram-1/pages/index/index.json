@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#2facff",
+  "navigationBarTitleText": "股票交易费用计算",
+  "navigationBarTextStyle": "white"
+}

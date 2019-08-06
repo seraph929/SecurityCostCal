@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#2facff",
+  "navigationBarTitleText": "股票盈亏计算",
+  "navigationBarTextStyle": "white"
+}

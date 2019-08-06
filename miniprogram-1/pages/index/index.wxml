@@ -1,0 +1,165 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="flex-wrp">
+    <view>
+      <view class="flex-wrp">
+        <view>
+          <image class="radio-display" style="width: 25px; height: 25px;" src='../../pages/img/tradedirection.png'></image>  
+        </view>
+        <view class="radio-display">
+          <text class="radio-display" decode="{{true}}">&nbsp;交易方向</text>
+        </view>
+      </view>
+      <view class="flex-wrp">
+        <view>
+          <radio-group class="radio-group" bindchange="buyOrSellChange">
+            <label wx:for="{{tradeDirectionSet}}" wx:key="key">
+              <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+            </label>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view style="width: 60px; height: 70px;">
+      <image class="img" style="width: 60px; height: 70px;" src='../../pages/img/vertical-line.png'></image>
+    </view>
+    <view>
+      <view class="flex-wrp">
+        <view>
+          <image class="radio-display" style="width: 25px; height: 25px;" src='../../pages/img/bourse.png'></image>  
+        </view>
+        <view class="radio-display">
+          <text class="radio-display" decode="{{true}}">&nbsp;交易市场</text>
+        </view>
+      </view>
+      <view class="flex-wrp">
+        <view>
+          <radio-group class="radio-group" bindchange="shOrSzChange">
+            <label wx:for="{{tradeMarketSet}}" wx:key="key">
+              <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+            </label>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 20px; height: 20px;" src='../../pages/img/price.png'></image>
+      </view>
+      <view >
+        <text class="textdisplay" decode="{{true}}">&nbsp;股票价格:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="股票价格" placeholder="请输入股票价格" value='{{priceValue}}' bindinput="priceInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;元</text>
+      </view>
+    </view>
+    <view wx:if="{{priceDigitHint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{priceDigitHint}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 20px; height: 20px;" src='../../pages/img/stocknum.png'></image>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;股票数量:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="股票数量" placeholder="请输入股票数量" value='{{numberValue}}' bindinput="numberInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;&nbsp;股</text> 
+      </view>
+    </view>
+    <view wx:if="{{numdigithint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{numdigithint}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="usermotto">
+    <view class="flex-wrp">
+      <view>
+        <image class="icon" style="width: 20px; height: 20px;" src='../../pages/img/commission.png'></image>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;佣金比例:&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+      <view>
+        <input type="digit" class="nobordersection" name="佣金比例" placeholder="请输入佣金比例" value='{{commissionPercentValue}}' bindinput="commissionInput" placeholder-class="placeholder"/>
+      </view>
+      <view>
+        <text class="textdisplay" decode="{{true}}">&nbsp;‱</text>
+      </view>
+    </view>
+    <view wx:if="{{commissiondigithint != ''}}" class="flex-wrp">
+      <view class="hintdisplay">
+        <text style="width:200px;" decode="{{true}}">{{commissiondigithint}}</text>
+      </view>
+    </view>
+  </view>
+  <button bindtap="resetBtnClick" class="reset">
+    <view>重置</view>
+  </button>
+  <button bindtap="calBtnClick" class="btn1{{nullJudge?'btnative':''}}">
+    <view>费用计算</view>
+  </button>
+  <view wx:if="{{fee > 0}}" class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" decode="{{true}}">总费用&nbsp;:</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" decode="{{true}}">{{fee}}&nbsp;元</text>
+      </view>
+      <view class="priceunitwidth">
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{commission > 0}}" class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">佣金&nbsp;：</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">{{commission}}&nbsp;元</text>
+      </view>
+      <view class="priceunitwidth">
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{stampTax > 0}}" class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">印花税&nbsp;：</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">{{stampTax}}&nbsp;元</text>
+      </view>
+      <view class="priceunitwidth">
+        <image bindtap='showStampTaxTip' style="width: 16px; height: 16px;" class="img" title='hint' src='../../pages/img/hint.png'></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{transferFee > 0}}" class="usermotto">
+    <view class="flex-wrp">
+      <view class="columnwidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">过户费&nbsp;：</text>
+      </view>
+      <view class="pricewidth">
+        <text style="width:40px;" class="textdisplay" decode="{{true}}">{{transferFee}}&nbsp;元</text>
+      </view>
+      <view class="priceunitwidth">
+        <image bindtap='showTransferFeeTip' style="width: 16px; height: 16px;" class="img" title='hint' src='../../pages/img/hint.png'></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/cal/cal",
+    "pages/index/index",
+    "pages/aboutme/aboutme"
+  ],
+  "window": {
+    "navigationBarTitleText": ""
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#00AEFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/cal/cal",
+        "text": "盈亏计算",
+        "iconPath": "pages/img/profitcal.png",
+        "selectedIconPath": "pages/img/profitcalclk.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "费用计算",
+        "iconPath": "pages/img/costcal.png",
+        "selectedIconPath": "pages/img/costcalclk.png"
+      },
+      {
+        "pagePath": "pages/aboutme/aboutme",
+        "text": "关于我",
+        "iconPath": "pages/img/aboutme.png",
+        "selectedIconPath": "pages/img/aboutmeclk.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ],
+  "sitemapLocation": "sitemap16.json"
+}

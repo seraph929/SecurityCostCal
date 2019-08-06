@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="../../pages/img/personal.jpg"></image>
+  </view>
+  <view class="userinfo">
+    <image style="width: 50px; height: 50px;" src='../../pages/img/introduction.png'></image>
+  </view>
+  <view class="flex-wrp">
+    <view>
+      <text class="textdisplay2" decode="{{true}}">&nbsp;产品</text>
+    </view>
+    <view>
+      <image style="width: 25px; height: 25px;" src='../../pages/img/dog.png'>、</image>  
+    </view>
+    <view>
+      <text class="textdisplay2" decode="{{true}}">、</text>
+    </view>
+    <view>
+      <text class="textdisplay2" decode="{{true}}">&nbsp;程序</text>
+    </view>
+    <view>
+      <image style="width: 25px; height: 25px;" src='../../pages/img/monkey.png'>、</image>  
+    </view>
+    <view>
+      <text class="textdisplay2" decode="{{true}}">、</text>
+    </view>
+    <view>
+      <text class="textdisplay2" decode="{{true}}">&nbsp;会计</text>
+    </view>
+    <view>
+      <image style="width: 25px; height: 25px;" src='../../pages/img/lion.png'>、</image>  
+    </view>
+  </view>
+  <view class="userinfo">
+  </view>
+  <view class="userinfo">
+  </view>
+  <view class="userinfo">
+    <image style="width: 60px; height: 60px;" src='../../pages/img/email.png'></image>  
+  </view>
+  <view class="userinfo">
+    <text class="textdisplay2" decode="{{true}}">&nbsp;1924819348@qq.com</text>
+  </view>
+  <view class="userinfo">
+    <image style="width: 50px; height: 50px;" src='../../pages/img/wechat.png'></image>  
+  </view>
+  <view class="userinfo">
+    <image style="width: 100px; height: 100px;" src='../../pages/img/qrcode.png'></image>
+  </view>
+  <view class="userinfo">
+    <button class='btn1btnative' open-type="feedback">反馈与建议
+    </button>
+  </view>
+</view>
